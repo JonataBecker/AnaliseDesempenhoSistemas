@@ -1,0 +1,19 @@
+{
+  "name": "AnaliseDesempenhoSistemas",
+  "version": "1.0.0",
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "author": "jonata-pc",
+  "contributors": [],
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^3.2.2",
+    "gulp-shell": "^0.5.2",
+    "os": "^0.1.1"
+  }
+}
