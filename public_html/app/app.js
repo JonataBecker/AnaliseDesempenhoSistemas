@@ -1,4 +1,7 @@
 angular.module('app', ['ui.router', 'ngResource'])
+        .run(function(){
+            google.charts.load('current', {'packages':['line']});
+        })
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/app/dados');
             $stateProvider
