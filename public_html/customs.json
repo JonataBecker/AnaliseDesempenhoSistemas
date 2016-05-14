@@ -2,6 +2,8 @@
     "elements": {
         "grafico": {
             "attributes": {
+                "id-grafico": {},
+                "load": {},
                 "id": {},
                 "title": {}
             }

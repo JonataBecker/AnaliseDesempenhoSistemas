@@ -1,6 +1,6 @@
-angular.module('app', ['ui.router', 'ngResource'])
+angular.module('app', ['ui.router', 'ngResource', 'ui.bootstrap'])
         .run(function(){
-            google.charts.load('current', {'packages':['line']});
+            google.charts.load('current', {'packages':['line', 'bar']});
         })
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/app/dados');

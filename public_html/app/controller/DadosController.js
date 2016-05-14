@@ -1,44 +1,31 @@
-angular.module('app').controller('DadosController', function ($scope, Dados) {
+angular.module('app').controller('DadosController', function ($scope, Dados, Grafico) {
 
     /**
-     * Adiciona gráfico de tempo de produção x número de incidentens
+     * Adiciona gráfico de tempo de produção x tempo de produção de incidentes
      */
-    $scope.addGraficoTempoProducao = function () {
-        Dados.tempoProducaoNumeroIncidentes().then(function (arr) {
+    $scope.addGraficoTempoProducaoTempoProducaoIncidentes = function () {
+        Dados.tempoProducaoTempoProducaoIncidentes().then(function (dados) {
+            Grafico.tempoProducaoTempoProducaoIncidentes(dados);
+        });
+    };
+
+    /**
+     * Adiciona gráfico de tempo de produção médio x tempo produçaõ médio
+     */
+    $scope.addGraficoTempoProducaoMedio = function () {
+        Dados.tempoProducaoMedio().then(function (arr) {
             var dataMat = [];
-            var i = 0;
             arr.data.forEach(function (item) {
-                dataMat.push([i, item.tempo, item.mediaNumeroIncidentes]);
-                i++;
+                dataMat.push([item.intervalo, item.incidentes]);
             });
             var data = new google.visualization.DataTable();
-            data.addColumn('number', 'Number');
-            data.addColumn('number', 'Tempo de produção');
-            data.addColumn('number', 'Número de incidentes');
+            data.addColumn('number', 'Tempo produção');
+            data.addColumn('number', 'Tempo de produção inicidentes');
             data.addRows(dataMat);
-            var chart = new google.charts.Line(document.getElementById('tempoProducaoNumeroIncidentes'));
+            var chart = new google.charts.Line(document.getElementById('tempoProducaoMedio'));
             chart.draw(data, {});
         });
     };
-    
-    /**
-     * Adiciona gráfico de tempo de revisão x número de incidentens
-     */
-    $scope.addGraficoTempoRevisao = function () {
-        Dados.tempoRevisaoNumeroIncidentes().then(function (arr) {
-            var dataMat = [];
-            var i = 0;
-            arr.data.forEach(function (item) {
-                dataMat.push([i, item.tempo, item.mediaNumeroIncidentes]);
-                i++;
-            });
-            var data = new google.visualization.DataTable();
-            data.addColumn('number', 'Number');
-            data.addColumn('number', 'Tempo de revisão');
-            data.addColumn('number', 'Número de incidentes');
-            data.addRows(dataMat);
-            var chart = new google.charts.Line(document.getElementById('tempoRevisaoNumeroIncidentes'));
-            chart.draw(data, {});
-        });
-    };    
+
+   
 });
