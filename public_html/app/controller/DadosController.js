@@ -38,7 +38,7 @@ angular.module('app').controller('DadosController', function ($scope, Dados, Gra
         Dados.tempoRevisaoMedio(Data.formatPeriodo()).then(function (arr) {
             var dataMat = [];
             arr.data.forEach(function (item) {
-                dataMat.push([item.intervalo, item.percentualRevisao]);
+                dataMat.push([item.intervalo, item.percentualProducao]);
             });
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Tempo revisao');

@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Dados</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Informações
+            </div>
+            <div class="panel-body">
+                Tempo total produção: <b>{{informacoes.horasTotal}}</b> horas</br>
+                Tempo total implementação: <b>{{informacoes.totalImplementacaoHoras}}</b> horas</br>
+                Tempo total Revisão: <b>{{informacoes.horasRevisao}}</b> horas</br>
+                Tempo total incidentes: <b>{{informacoes.horasCorrecao}}</b> horas</br>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group" ng-repeat="faixa in faixas">
+            <label for="exampleInputEmail2">{{faixa.intervalo}} - {{faixa.percentualProducao}}</label>
+            <input type="range" ng-model="faixa.percentualProducao" class="form-control" ng-change="changeValue($index)" />
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <grafico load="addGraficoTempoRevisaoMedio()" id-grafico="tempoRevisaoMedio" title="Tempo Revisão Médio X Percentual de tempo gasto em implementação"></grafico>
+    </div>
+</div>

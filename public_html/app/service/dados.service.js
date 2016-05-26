@@ -41,9 +41,9 @@ angular.module('app').factory('Dados', function ($http) {
      */
     function informacaoPeriodo(periodo) {
         var filtro = "";
-        if (periodo) {
-            filtro = "?filtro.campo=periodo&filtro.condicao=IGUAL&filtro.valor=" + periodo;
-        }
+//        if (periodo) {
+//            filtro = "?filtro.campo=periodo&filtro.condicao=IGUAL&filtro.valor=" + periodo;
+//        }
         return $http.get("http://localhost:8080/AnaliseDesempenhoSistemasWebService/api/INFORMACAO_PERIODO" + filtro);
     }
     

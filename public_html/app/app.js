@@ -19,6 +19,15 @@ angular.module('app', ['ui.router', 'ngResource', 'ui.bootstrap'])
                                 controller: 'DadosController'
                             }
                         }
+                    })
+                    .state('app.simulador', {
+                        url: "/simulador",
+                        views: {
+                            'container': {
+                                templateUrl: "app/template/simulador.html",
+                                controller: 'SimuladorController'
+                            }
+                        }
                     });
 
         });
