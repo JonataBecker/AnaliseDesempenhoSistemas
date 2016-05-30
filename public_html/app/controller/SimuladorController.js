@@ -66,7 +66,6 @@ angular.module('app').controller('SimuladorController', function ($scope, Dados)
                 if ($scope.faixas[changeIndex].percentualProducao >= 100) {
                     $scope.faixas[changeIndex].percentualProducao = 100;
                 }
-                $scope.faixas[changeIndex].percentualImplementacao = parseInt($scope.faixas[changeIndex].percentualImplementacao) + ((total > 100) ? -1 : 1);                
             }
         }, 200);
     };
@@ -126,8 +125,7 @@ angular.module('app').controller('SimuladorController', function ($scope, Dados)
             var faixaCorrecao = getFaixa(faixa.intervalo);
             var totalHoras = ($scope.informacoes.totalProducaoHorasMinutos * (faixa.percentualProducao / 100));
             total += totalHoras * (getPercentualCorrecao(faixaCorrecao) / 100);
-            var totalHorasImp = ($scope.informacoes.totalImplementacaoMinutos * (faixa.percentualImplementacao / 100));
-            tempoRevisao += totalHorasImp * (getPercentualRevisao(faixaCorrecao) / 100);
+            tempoRevisao += totalHoras * (getPercentualRevisao(faixaCorrecao) / 100);
         });
         $scope.informacoes.horasCorrecao = total / 60; 
         $scope.informacoes.horasRevisao = tempoRevisao / 60; 
@@ -142,8 +140,6 @@ angular.module('app').controller('SimuladorController', function ($scope, Dados)
         Dados.tempoRevisaoMedio().then(function (arr) {
             var faixas = [];
             arr.data.forEach(function(faixa){
-////                faixa.percentualProducao = Math.round(faixa.percentualProducao);
-//                faixa.percentualProducao = faixa.percentualProducao;
                 faixas.push(faixa);
             });
             $scope.faixas = faixas;
@@ -161,6 +157,5 @@ angular.module('app').controller('SimuladorController', function ($scope, Dados)
             calculaTempoCorrecao();
         });        
     }
-
 });
 
